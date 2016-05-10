@@ -1,0 +1,17 @@
+{
+  "name": "react-project-base",
+  "version": "0.0.1",
+  "authors": [],
+  "description": "react workshop",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.2.3",
+    "bootstrap-sass": "~3.3.6"
+  }
+}
