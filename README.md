@@ -1,6 +1,14 @@
 # React-Project-Base
 
-Project base ReactJS to initialize and start learning about this library
+Project base ReactJS to initialize and start learning about this library.
+
+####Prerequisites####
+
+Previous, you need:
+* [Node.js](https://nodejs.org/en/download/)
+* [Sass](http://sass-lang.com/install)
+* [npm](https://docs.npmjs.com/getting-started/installing-node)
+* [Bower](http://bower.io/)
 
 ###Getting Started###
 
@@ -19,6 +27,8 @@ Follow these simple instructions:
 	> npm start
 ```
 
+Finally, go to http://localhost:8080/
+
 ####No Git? No problem!#####
 
 [Download](https://github.com/rdavisual/react-project-base/archive/master.zip) the .zip file, then open your terminal, change to the project directory, and: follow these simple instructions:
@@ -29,3 +39,5 @@ Follow these simple instructions:
 	> grunt sass
 	> npm start
 ```
+
+Finally, go to http://localhost:8080/
