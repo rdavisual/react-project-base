@@ -5,9 +5,20 @@ import SimpleBox from './simple_box';
 export default class Table extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            table : []
-        };
+        let boxesLength = this.props.rows * this.props.columns,
+                cells = [];
+        for (let i = 0; i < boxesLength; i++) {
+            let cell = { id:i, classBox: ""};
+            cells.push(cell);
+        }
+        this.state = { table : cells };
+        this.clickHandler = this.clickHandler.bind(this);
+    }
+
+    clickHandler(id) {
+        let table = this.state.table;
+        table[parseInt(id)].classBox = !table[parseInt(id)].classBox? "black" : "";
+        this.setState({'table':table});
     }
 
     render() {
@@ -15,7 +26,8 @@ export default class Table extends Component {
         const columnsMaker = () => {
             let columns = [];
             for (var i = 0; i < this.props.columns; i++) {
-                columns.push(<SimpleBox id={count} classBox="" />);
+                const cell = this.state.table[count];
+                columns.push(<SimpleBox compId={cell.id} onClick={this.clickHandler} classBox={cell.classBox} />);
                 count += 1;
             }
             columns.push(<br />);

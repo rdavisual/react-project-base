@@ -1,8 +1,13 @@
 import React from 'react';
 
-const SimpleBox = ({id, classBox}) => {
+const SimpleBox = ({compId, onClick, classBox}) => {
 
-    return ( <div id={id} className={`box ${classBox||''}`} ></div>);
+    const changeClass = ()=>{
+        console.log(compId);
+        onClick(compId);
+    };
+
+    return ( <div id={compId} className={`box ${classBox||''}`} onClick={changeClass} ></div>);
 };
 
 export default SimpleBox;
