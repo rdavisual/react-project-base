@@ -8,7 +8,7 @@ export default class Table extends Component {
         let boxesLength = this.props.rows * this.props.columns,
                 cells = [];
         for (let i = 0; i < boxesLength; i++) {
-            let cell = { id:i, classBox: ""};
+            let cell = { id:i, classBox: "", available: true};
             cells.push(cell);
         }
         this.state = { table : cells };
@@ -17,8 +17,10 @@ export default class Table extends Component {
 
     clickHandler(id) {
         let table = this.state.table;
-        table[parseInt(id)].classBox = !table[parseInt(id)].classBox? "black" : "";
+        table[parseInt(id)].classBox = this.props.classColor;
+        table[parseInt(id)].available = false;
         this.setState({'table':table});
+        this.props.onClick(id);
     }
 
     render() {
@@ -27,7 +29,7 @@ export default class Table extends Component {
             let columns = [];
             for (var i = 0; i < this.props.columns; i++) {
                 const cell = this.state.table[count];
-                columns.push(<SimpleBox compId={cell.id} onClick={this.clickHandler} classBox={cell.classBox} />);
+                columns.push(<SimpleBox compId={cell.id} onClick={this.clickHandler} classBox={cell.classBox} available={cell.available} />);
                 count += 1;
             }
             columns.push(<br />);
