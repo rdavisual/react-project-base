@@ -6,8 +6,15 @@ export default class Table extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            table : []
+            table : [],
+            classBox : ""
         };
+    }
+
+    clickHandler(id) {
+        let classBox = this.state.classBox;
+        classBox = "red";
+        this.setState({'classBox':classBox});
     }
 
     render() {
@@ -15,7 +22,7 @@ export default class Table extends Component {
         const columnsMaker = () => {
             let columns = [];
             for (var i = 0; i < this.props.columns; i++) {
-                columns.push(<SimpleBox id={count} classBox="" />);
+                columns.push(<SimpleBox id={count} classBox={this.state.classBox} onClick={this.clickHandler.bind(this)} />);
                 count += 1;
             }
             columns.push(<br />);

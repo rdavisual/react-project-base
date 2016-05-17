@@ -6,7 +6,7 @@ import Table from './table';
 export default class App extends Component {
   render() {
     return (
-        <Table rows={5} columns={5} />
+        <Table rows={3} columns={3} />
     );
   }
 }
