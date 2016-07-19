@@ -1,7 +1,35 @@
 // @import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
 
 body {
-    color:red;
+    // color:red;
+    padding: 50px;
+}
+
+
+.box {
+    width: 100px;
+    height: 100px;
+    border: black solid 1px;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.big-box {
+    float: left;
+    margin: 10px;
+
+    .player-info {
+        display: inline-block;
+        margin: 0 10px 0px 10px;
+    }
+}
+
+.green {
+    background-color: green;
+}
+
+.black {
+    background-color: black;
 }
 
 .tableBox {

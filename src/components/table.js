@@ -3,21 +3,26 @@ import React, { Component } from 'react';
 import SimpleBox from './simple_box';
 
 export default class Table extends Component {
-    constructor(props) {
-        super(props);
+    componentWillMount() {
         let boxesLength = this.props.rows * this.props.columns,
-                cells = [];
-        for (let i = 0; i < boxesLength; i++) {
+            cells = [];
+        for (var i = 0; i < boxesLength; i++) {
             let cell = { id:i, classBox: "", available: true};
             cells.push(cell);
         }
-        this.state = { table : cells };
-        this.clickHandler = this.clickHandler.bind(this);
+        this.setState({table:cells});
+    }
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            table : []
+        };
     }
 
     clickHandler(id) {
         let table = this.state.table;
-        table[parseInt(id)].classBox = this.props.classColor;
+        table[parseInt(id)].classBox = this.props.class;
         table[parseInt(id)].available = false;
         this.setState({'table':table});
         this.props.onClick(id);
@@ -25,11 +30,11 @@ export default class Table extends Component {
 
     render() {
         let count = 0;
-        const columnsMaker = () => {
+        const columnsMaker = (color) => {
             let columns = [];
             for (var i = 0; i < this.props.columns; i++) {
-                const cell = this.state.table[count];
-                columns.push(<SimpleBox compId={cell.id} onClick={this.clickHandler} classBox={cell.classBox} available={cell.available} />);
+                let cell = this.state.table[count];
+                columns.push(<SimpleBox id={cell.id} onClick={this.clickHandler.bind(this)} classBox={cell.classBox} available={cell.available} />);
                 count += 1;
             }
             columns.push(<br />);
@@ -42,9 +47,8 @@ export default class Table extends Component {
             }
             return rows;
         };
-
         return (
-            <div className="tableBox">
+            <div>
                 {rowsMaker()}
             </div>
         );

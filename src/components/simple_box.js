@@ -1,14 +1,15 @@
 import React from 'react';
 
-const SimpleBox = ({compId, onClick, classBox, available}) => {
+const SimpleBox = ({id, onClick, classBox, available}) => {
 
-    const changeClass = ()=>{
+    const changeClass = (e)=>{
         if (available) {
-            onClick(compId);
+            onClick(e.target.id);
+            available = false;
         }
     };
 
-    return ( <div id={compId} className={`box ${classBox||''}`} onClick={changeClass} ></div>);
+    return ( <div id={id} className={`box ${classBox||''}`} onClick={changeClass} ></div>);
 };
 
 export default SimpleBox;

@@ -62,59 +62,59 @@ export default class Game extends Component {
         }
     }
 
-    // updateName(e) {
-    //     const target = e.target;
-    //     let player = {};
-    //     console.log(target.id);
-    //     if (target.id === 'player1'){
-    //         player = this.state.player1;
-    //         player.name = target.value;
-    //         this.setState({"player1":player});
-    //     } else {
-    //         player = this.state.player2;
-    //         player.name = target.value;
-    //         this.setState({"player2":player});
-    //     }
-    // }
+    updateName(e) {
+        const target = e.target;
+        let player = {};
+        console.log(target.id);
+        if (target.id === 'player1'){
+            player = this.state.player1;
+            player.name = target.value;
+            this.setState({"player1":player});
+        } else {
+            player = this.state.player2;
+            player.name = target.value;
+            this.setState({"player2":player});
+        }
+    }
 
     render() {
         let color = this.state.turn === "player1" ? this.state.player1.color : this.state.player2.color;
-        // switch (this.state.stateGame) {
-        //     case "initial":
-        //         return (
-        //             <article className="big-box">
-        //                 <div className="player-info">
-        //                     <h4>{this.state.player1.name}</h4>
-        //                     <input id="player1" type="text" defaultValue={this.state.player1.name} onChange={this.updateName.bind(this)} />
-        //                 </div>
-        //                 <div className="player-info">
-        //                     <h4>{this.state.player2.name}</h4>
-        //                     <input id="player2" type="text" defaultValue={this.state.player2.name} onChange={this.updateName.bind(this)} />
-        //                 </div>
-        //                 <button onClick={this.fixName.bind(this)}>save names</button>
-        //             </article>
-        //         );
-        //     case "game":
-        //         return (
-        //             <section>
-        //                 <article className="big-box">
-        //                 <Table rows={3} columns={3} onClick={this.clickHandler.bind(this)} class={color} />
-        //                 </article>
-        //                 <article className="big-box">
-        //                 <h1>{this.state.turn === "player1"?this.state.player1.name:this.state.player2.name}</h1>
-        //                 </article>
-        //             </section>
-        //         );
-        //     case "over":
-        //         return (
-        //             <div>
-        //                 <h1>WINNER : {this.state.winner}</h1>
-        //                 <button className="btn" onClick={()=>{location.reload();}}>RE-PLAY</button>
-        //             </div>
-        //         );
-        //     default:
-        //         return <h1>HA HA </h1>;
-        // }
+        switch (this.state.stateGame) {
+            case "initial":
+                return (
+                    <article className="big-box">
+                        <div className="player-info">
+                            <h4>{this.state.player1.name}</h4>
+                            <input id="player1" type="text" defaultValue={this.state.player1.name} onChange={this.updateName.bind(this)} />
+                        </div>
+                        <div className="player-info">
+                            <h4>{this.state.player2.name}</h4>
+                            <input id="player2" type="text" defaultValue={this.state.player2.name} onChange={this.updateName.bind(this)} />
+                        </div>
+                        <button onClick={this.fixName.bind(this)}>save names</button>
+                    </article>
+                );
+            case "game":
+                return (
+                    <section>
+                        <article className="big-box">
+                        <Table rows={3} columns={3} onClick={this.clickHandler.bind(this)} class={color} />
+                        </article>
+                        <article className="big-box">
+                        <h1>{this.state.turn === "player1"?this.state.player1.name:this.state.player2.name}</h1>
+                        </article>
+                    </section>
+                );
+            case "over":
+                return (
+                    <div>
+                        <h1>WINNER : {this.state.winner}</h1>
+                        <button className="btn" onClick={()=>{location.reload();}}>RE-PLAY</button>
+                    </div>
+                );
+            default:
+                return <h1>HA HA </h1>;
+        }
 
         //
         // if (this.state.winner){
@@ -135,17 +135,6 @@ export default class Game extends Component {
         //         </section>
         //     );
         // }
-
-        return (
-            <section>
-                <article className="big-box">
-                <Table rows={3} columns={3} onClick={this.clickHandler.bind(this)} classColor={color} />
-                </article>
-                <article className="big-box">
-                <h1>{this.state.turn === "player1"?this.state.player1.name:this.state.player2.name}</h1>
-                </article>
-            </section>
-        );
 
     }
 }
